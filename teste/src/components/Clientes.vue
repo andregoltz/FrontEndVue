@@ -100,7 +100,7 @@ export default {
   },
   methods: {
     lista() {
-      axios.get("https://localhost:44394/clientes").then((res) => {
+      axios.get("https://backendtestegrupo.azurewebsites.net/clientes").then((res) => {
         this.clientes = res.data;
       });
     },
@@ -110,7 +110,7 @@ export default {
             this.alterar()
           return
         }
-        axios.post("https://localhost:44394/clientes", this.cliente).then(() => {
+        axios.post("https://backendtestegrupo.azurewebsites.net/clientes", this.cliente).then(() => {
           this.lista()
             this.cliente = {nome:"", cpf:"", email:""}
         }).catch((error) => {
@@ -123,7 +123,7 @@ export default {
     },
     excluir(id) {
       if(confirm("Confirma a exclusão?")){
-        axios.delete(`https://localhost:44394/clientes/${id}`).then(() => {
+        axios.delete(`https://backendtestegrupo.azurewebsites.net/clientes/${id}`).then(() => {
             this.lista()
         })
       }
@@ -133,7 +133,7 @@ export default {
     },
     alterar() {
      if(!this.cliente.nome == "" && !this.cliente.cpf == "" && !this.cliente.email==""){ 
-        axios.put(`https://localhost:44394/clientes/${this.cliente.id}`, this.cliente).then(() => {
+        axios.put(`https://backendtestegrupo.azurewebsites.net/clientes/${this.cliente.id}`, this.cliente).then(() => {
             this.lista()
             this.cliente = {nome:"", cpf:"", email:""}
         }).catch((error) => {
